@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/mi_profil"
+            android:title="Profile"
+            android:icon="@drawable/ic_profile"/>
+        <item android:title="Pasien">
+            <menu>
+                <item android:id="@+id/mi_daftar_pasien"
+                    android:title="Daftar Pasien"
+                    android:icon="@drawable/ic_table"/>
+            </menu>
+        </item>
+    </group>
+</menu>

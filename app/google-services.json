@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "1020029857780",
+    "project_id": "rumah-sakit-4e499",
+    "storage_bucket": "rumah-sakit-4e499.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020029857780:android:171064e52c55eb3ad353a1",
+        "android_client_info": {
+          "package_name": "com.example.rumah_sakit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020029857780-5qv094rs5gal0ov3p72tokbcropuik72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVf2-rohejoK2VK_vgpVO5tD_EC9t6uHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020029857780-5qv094rs5gal0ov3p72tokbcropuik72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020029857780:android:3020103f8528e593d353a1",
+        "android_client_info": {
+          "package_name": "com.rumahsakit.notifikasi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020029857780-5qv094rs5gal0ov3p72tokbcropuik72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVf2-rohejoK2VK_vgpVO5tD_EC9t6uHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020029857780-5qv094rs5gal0ov3p72tokbcropuik72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

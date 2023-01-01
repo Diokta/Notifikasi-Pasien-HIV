@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.DetailObatActivity"
+    android:padding="30dp"
+    android:background="@color/teal_700">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_data"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:cardCornerRadius="20dp"
+        android:layout_marginTop="50dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_nama_obat_header"
+                        android:text="Nama Obat"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_margin="10dp"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:text=":"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:id="@+id/tv_nama_obat_content"
+                        app:layout_constraintLeft_toRightOf="@id/tv_nama_obat_header"
+                        android:text="Nama Obat"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_margin="10dp"
+                        android:textStyle="bold"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_kategori_obat_header"
+                        android:text="Kategori Obat"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_margin="10dp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:text=":"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:id="@+id/tv_kategori_obat_content"
+                        android:text="Kategori Obat"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_margin="10dp"
+                        android:textStyle="bold"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_deskripsi_obat_header"
+                        android:text="Deskripsi Obat"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_margin="10dp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:text=":"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:id="@+id/tv_deskripsi_obat_content"
+                        android:text="Deskripsi Obat"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_margin="10dp"
+                        android:textStyle="bold"/>
+                </TableRow>
+
+            </TableLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+    <Button
+        android:id="@+id/btn_ubah_obat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ubah"
+        android:padding="15dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/cv_data"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+    <Button
+        android:id="@+id/btn_hapus_obat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hapus"
+        android:padding="15dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_ubah_obat"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
