@@ -23,8 +23,9 @@
 
                 <TextView
                     android:id="@+id/tv_no_rm"
-                    android:layout_width="100dp"
-                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
                     android:layout_marginBottom="2dp"
@@ -34,17 +35,19 @@
 
                 <TextView
                     android:id="@+id/tv_nama"
-                    android:layout_width="100dp"
-                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
                     android:layout_marginBottom="2dp"
                     android:textAlignment="center"
                     android:background="@color/white" />
 
                 <RelativeLayout
-                    android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
                     android:layout_marginBottom="2dp"
                     android:background="@color/white">

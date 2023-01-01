@@ -98,7 +98,7 @@ class DetailPasienPendampingActivity : AppCompatActivity() {
             })
 
             with(builder) {
-                setTitle("Masukan Tanggal Registrasi Rutin")
+                setTitle("Masukan Tanggal Kunjungan Rutin")
                 setPositiveButton("Simpan") { dialog, id ->
                     SimpanTglKunjunganRutin(tanggal)
                 }

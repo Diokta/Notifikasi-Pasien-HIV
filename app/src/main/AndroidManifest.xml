@@ -16,6 +16,10 @@
         android:theme="@style/Theme.Rumah_sakit.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".pasien.InputMinumObatPasienActivity"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".pasien.DaftarObatPasienActivity"
             android:exported="true">
             <intent-filter>
@@ -26,16 +30,13 @@
         </activity>
         <activity
             android:name=".pendamping.TambahJadwalMinumObat"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".pendamping.DaftarKunjunganPendampingActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".pendamping.TambahKunjunganPendamping"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".pendamping.DetailPasienPendampingActivity"
             android:exported="false" />
@@ -47,8 +48,7 @@
             android:exported="false" />
         <activity
             android:name=".pendamping.DaftarPasienPendampingActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".admin.DetailObatActivity"
             android:exported="false" />

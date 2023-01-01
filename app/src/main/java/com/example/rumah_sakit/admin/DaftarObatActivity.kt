@@ -93,7 +93,6 @@ class DaftarObatActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         nav_view.getHeaderView(0).tv_nama_nav.text = "${user.nama} (${user.job})"
         nav_view.getHeaderView(0).tv_email_nav.text  = user.email
     }
-
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)){
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -101,7 +100,6 @@ class DaftarObatActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
             super.onBackPressed()
         }
     }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
@@ -125,7 +123,6 @@ class DaftarObatActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
             val intent = Intent(this, DaftarObatActivity::class.java)
             startActivity(intent)
         }
-
         val drawer : DrawerLayout = drawer_layout
         drawer.closeDrawer(GravityCompat.START)
         return true

@@ -97,14 +97,12 @@ class DaftarPasienTerdaftarActivity : AppCompatActivity(),
                     })
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
 
         })
     }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
@@ -133,5 +131,4 @@ class DaftarPasienTerdaftarActivity : AppCompatActivity(),
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
-
 }

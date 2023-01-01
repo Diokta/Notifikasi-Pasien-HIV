@@ -70,10 +70,8 @@ class DaftarPetugasActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
     private fun getPetugasData() {
         database = FirebaseDatabase.getInstance().getReference("Petugas")
-
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
                 petugasArrayList.clear()
                 keyArrayList.clear()
                 if (snapshot.exists()){

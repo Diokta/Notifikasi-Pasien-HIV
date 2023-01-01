@@ -23,145 +23,179 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp">
-            <TextView
-                android:id="@+id/tv_nik_header"
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NIK    :"
-                android:layout_margin="10dp"
-                android:textStyle="bold"
-                />
+                >
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_nik_header"
+                        android:text="NIK"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:text=":"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:id="@+id/tv_nik_content"
+                        android:text="NIK"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_nama_header"
+                        android:text="Nama"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:text=":"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        />
 
-            <TextView
-                android:id="@+id/tv_nik_content"
-                app:layout_constraintLeft_toRightOf="@id/tv_nik_header"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NIK"
-                android:layout_margin="10dp"
-                android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/tv_nama_content"
+                        android:text="Nama"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_tgl_lahir_header"
+                        android:text="Tanggal Lahir"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:text=":"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:id="@+id/tv_tgl_lahir_content"
+                        android:text="Tanggal Lahir"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_email_header"
+                        android:text="Email"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:text=":"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:id="@+id/tv_email_content"
+                        android:text="Email"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_telepon_header"
+                        android:text="Telepon"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:text=":"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:id="@+id/tv_telepon_content"
+                        android:text="Telepon"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_jenis_kelamin_header"
+                        android:text="Jenis Kelamin"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:text=":"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        />
 
-
-            <TextView
-                android:id="@+id/tv_nama_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nama     :"
-                android:layout_margin="10dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_nik_header"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/tv_nama_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nama"
-                android:layout_margin="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_nik_header"
-                app:layout_constraintLeft_toRightOf="@id/tv_nama_header"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tv_tgl_lahir_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tanggal Lahir     :"
-                android:layout_margin="10dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_nama_header"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tv_tgl_lahir_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tanggal Lahir"
-                android:layout_margin="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_nama_header"
-                app:layout_constraintLeft_toRightOf="@id/tv_tgl_lahir_header"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tv_email_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email     :"
-                android:layout_margin="10dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_tgl_lahir_content"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/tv_email_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email"
-                android:layout_margin="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_tgl_lahir_content"
-                app:layout_constraintLeft_toRightOf="@id/tv_email_header"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tv_telepon_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Telepon     :"
-                android:layout_margin="10dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_email_header"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/tv_telepon_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Telepon"
-                android:layout_margin="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_email_header"
-                app:layout_constraintLeft_toRightOf="@id/tv_telepon_header"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tv_jenis_kelamin_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jenis Kelamin     :"
-                android:layout_margin="10dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_telepon_header"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/tv_jenis_kelamin_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jenis Kelamin"
-                android:layout_margin="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_telepon_header"
-                app:layout_constraintLeft_toRightOf="@id/tv_jenis_kelamin_header"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tv_bagian_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bagian     :"
-                android:layout_margin="10dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_jenis_kelamin_header"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/tv_bagian_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bagian"
-                android:layout_margin="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_jenis_kelamin_header"
-                app:layout_constraintLeft_toRightOf="@id/tv_bagian_header"
-                android:textStyle="bold"/>
-
+                    <TextView
+                        android:id="@+id/tv_jenis_kelamin_content"
+                        android:text="Jenis Kelamin"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_bagian_header"
+                        android:text="Bagian"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:text=":"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:id="@+id/tv_bagian_content"
+                        android:text="Bagian"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:textStyle="bold"/>
+                </TableRow>
+            </TableLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
     <Button
         android:id="@+id/btn_ubah"

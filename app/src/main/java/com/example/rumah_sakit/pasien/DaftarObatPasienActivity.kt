@@ -11,12 +11,17 @@ import com.example.rumah_sakit.R
 import com.example.rumah_sakit.adapter.TabelObatPasienAdapter
 import com.example.rumah_sakit.data.*
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_daftar_obat_pasien.*
+import kotlinx.android.synthetic.main.activity_daftar_obat_pasien.btn_timepicker
 import kotlinx.android.synthetic.main.activity_daftar_obat_pasien.drawer_layout
+import kotlinx.android.synthetic.main.activity_daftar_obat_pasien.edt_waktu_minum_obat
 import kotlinx.android.synthetic.main.activity_daftar_obat_pasien.nav_view
 import kotlinx.android.synthetic.main.activity_daftar_obat_pasien.toolbar
 import kotlinx.android.synthetic.main.activity_daftar_pasien_pendamping.*
+import kotlinx.android.synthetic.main.activity_tambah_jadwal_minum_obat.*
 import kotlinx.android.synthetic.main.nav_header.view.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -29,9 +34,9 @@ class DaftarObatPasienActivity : AppCompatActivity() ,
     private lateinit var jadwalObatRecyclerView: RecyclerView
 
     private var jadwalObatArrayList = ArrayList<DaftarJadwalObatPasien>()
-    private var keyArrayList = ArrayList<String>()
     private lateinit var userPref : UserPref
     private lateinit var user : User
+    private lateinit var selectedJadwal : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +59,37 @@ class DaftarObatPasienActivity : AppCompatActivity() ,
         user = userPref.getUser()
 
         setProfile(user)
+
+        btn_timepicker.setOnClickListener {
+            val builder: MaterialTimePicker = MaterialTimePicker.Builder()
+                .setTitleText("Waktu Kunjungan")
+                .setTimeFormat(TimeFormat.CLOCK_24H)
+                .setPositiveButtonText("Simpan")
+                .setNegativeButtonText("Batal")
+                .build()
+
+
+            builder.addOnPositiveButtonClickListener {
+//                val pickedHour: Int = builder.hour
+                val pickedMinute: Int = builder.minute
+
+                val formattedTime: String = when {
+                    pickedMinute < 10 -> {
+                        "${builder.hour}:0${builder.minute}"
+                    }
+                    else -> {
+                        "${builder.hour}:${builder.minute}"
+                    }
+                }
+                edt_waktu_minum_obat.setText(formattedTime)
+            }
+            builder.show(supportFragmentManager, "MyTAG")
+        }
+
         getPasienData()
+
+        
+
     }
 
     private fun getPasienData() {
@@ -85,6 +120,7 @@ class DaftarObatPasienActivity : AppCompatActivity() ,
                                     jadwalObatRecyclerView.adapter = adapter
                                     adapter.setOnItemClickListener(object : TabelObatPasienAdapter.onItemClickListener{
                                         override fun onItemClick(position: Int) {
+                                            selectedJadwal = jadwalObatArrayList[position].key.toString()
 
                                         }
                                     })
