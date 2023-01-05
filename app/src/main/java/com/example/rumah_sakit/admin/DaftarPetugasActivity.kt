@@ -116,6 +116,12 @@ class DaftarPetugasActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         }  else if (id == R.id.mi_daftar_pasien){
             val intent = Intent(this, DaftarPasienTerdaftarActivity::class.java)
             startActivity(intent)
+        }else if (id == R.id.mi_daftar_kunjungan){
+            val intent = Intent(
+                this,
+                DaftarKunjunganAdminActivity::class.java
+            )
+            startActivity(intent)
         } else if (id == R.id.mi_tambah_petugas){
             val intent = Intent(this, RegisterPetugasActivity::class.java)
             startActivity(intent)

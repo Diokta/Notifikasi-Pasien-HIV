@@ -2,6 +2,7 @@ package com.example.rumah_sakit.pendamping
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Message
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -14,6 +15,8 @@ import com.example.rumah_sakit.data.Obat
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessagingService
 import kotlinx.android.synthetic.main.activity_tambah_jadwal_minum_obat.*
 
 class TambahJadwalMinumObat : AppCompatActivity() {
@@ -130,6 +133,7 @@ class TambahJadwalMinumObat : AppCompatActivity() {
                 val id = database.push().key.toString()
                 database.child(key.toString()).child(id).setValue(jadwal).addOnSuccessListener {
                     edt_waktu_minum_obat.setText("")
+
                     Toast.makeText(this, "Jadwal Berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
                 }.addOnFailureListener {
                     Toast.makeText(this, "Jadwal Gagal Ditambahkan", Toast.LENGTH_SHORT).show()

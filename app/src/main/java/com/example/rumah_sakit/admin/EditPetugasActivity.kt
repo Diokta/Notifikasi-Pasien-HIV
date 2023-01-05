@@ -21,9 +21,9 @@ import java.util.*
 
 class EditPetugasActivity : AppCompatActivity() {
 
-    private lateinit var database : DatabaseReference
-    private lateinit var petugasPref : PetugasPref
-    private lateinit var userPref : UserPref
+    private lateinit var database: DatabaseReference
+    private lateinit var petugasPref: PetugasPref
+    private lateinit var userPref: UserPref
 
     private var email: String? = null
     private var nik: String? = null
@@ -31,19 +31,19 @@ class EditPetugasActivity : AppCompatActivity() {
     private var tanggal_lahir: String? = null
     private var telepon: String? = null
     private var jenis_kelamin: String? = null
-    private var bagian : String? = null
+    private var bagian: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_petugas)
 
-        val key : String? = intent.getStringExtra("key")
+        val key: String? = intent.getStringExtra("key")
 
         petugasPref = PetugasPref(this)
-        val petugas : Petugas = petugasPref.getPetugas()
+        val petugas: Petugas = petugasPref.getPetugas()
 
         userPref = UserPref(this)
-        val user : User = userPref.getUser()
+        val user: User = userPref.getUser()
 
         initializeValue(petugas)
 
@@ -51,9 +51,9 @@ class EditPetugasActivity : AppCompatActivity() {
         btn_datepicker.setOnClickListener {
             val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
 
-            val formatString = "yyyy-MM-dd"
+            val formatString = "d-MM-yyyy"
             val dateFormat = SimpleDateFormat(formatString)
-            val date : Date = dateFormat.parse(edt_tl_edit.text.toString())
+            val date: Date = dateFormat.parse(edt_tl_edit.text.toString())
             calendar.time = date
             calendar.add(Calendar.DAY_OF_MONTH, 1)
 
@@ -65,8 +65,13 @@ class EditPetugasActivity : AppCompatActivity() {
             datePicker.addOnPositiveButtonClickListener {
 
                 calendar.time = Date(it)
-                edt_tl_edit.setText("${calendar.get(Calendar.YEAR)}-" +
-                        "${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.DAY_OF_MONTH)}")
+                var tanggal = ""
+                if  (calendar.get(Calendar.MONTH) + 1 >= 10){
+                    tanggal = "${calendar.get(Calendar.DAY_OF_MONTH)}-${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.YEAR)}"
+                } else {
+                    tanggal = "${calendar.get(Calendar.DAY_OF_MONTH)}-0${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.YEAR)}"
+                }
+                edt_tl_edit.setText(tanggal)
 
             }
             datePicker.show(supportFragmentManager, "MyTAG")
@@ -79,72 +84,74 @@ class EditPetugasActivity : AppCompatActivity() {
             tanggal_lahir = edt_tl_edit.text.toString()
             telepon = edt_telepon_edit.text.toString()
 
-            val selectedJenisKelamin : RadioButton = findViewById(rg_jenis_kelamin_edit.checkedRadioButtonId)
+            val selectedJenisKelamin: RadioButton =
+                findViewById(rg_jenis_kelamin_edit.checkedRadioButtonId)
             jenis_kelamin = selectedJenisKelamin.text.toString()
 
-            val selectedBagian : RadioButton = findViewById(rg_bagian_edit.checkedRadioButtonId)
+            val selectedBagian: RadioButton = findViewById(rg_bagian_edit.checkedRadioButtonId)
             bagian = selectedBagian.text.toString()
 
             //Validasi Email
-            if(email!!.isEmpty()){
+            if (email!!.isEmpty()) {
                 edt_email_edit.error = "Email Harus Diisi"
                 edt_email_edit.requestFocus()
                 return@setOnClickListener
             }
 
             //Validasi email tidak sesuai
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 edt_email_edit.error = "Email Tidak Valid"
                 edt_email_edit.requestFocus()
                 return@setOnClickListener
             }
 
             //Validasi NIK
-            if (nik!!.isEmpty()){
+            if (nik!!.isEmpty()) {
                 edt_nik_edit.error = "NIK Harus Diisi"
                 edt_nik_edit.requestFocus()
                 return@setOnClickListener
             }
 
             //validasi panjang NIK
-            if (nik!!.length != 16){
+            if (nik!!.length != 16) {
                 edt_nik_edit.error = "NIK Harus 16 Karakter"
                 edt_nik_edit.requestFocus()
                 return@setOnClickListener
             }
 
             //validasi nama
-            if (nama!!.isEmpty()){
+            if (nama!!.isEmpty()) {
                 edt_nama_edit.error = "Nama Harus Diisi"
                 edt_nama_edit.requestFocus()
                 return@setOnClickListener
             }
 
             //validasi tanggal lahir
-            if (tanggal_lahir!!.isEmpty()){
+            if (tanggal_lahir!!.isEmpty()) {
                 edt_tl_edit.error = "Tanggal Lahir Harus Diisi"
                 edt_tl_edit.requestFocus()
                 return@setOnClickListener
             }
 
             //validasi telepon
-            if (telepon!!.isEmpty()){
+            if (telepon!!.isEmpty()) {
                 edt_telepon_edit.error = "Telepon Harus Diisi"
                 edt_telepon_edit.requestFocus()
                 return@setOnClickListener
             }
 
-            editFirebase(user.uid, key, petugas.password, )
+            editFirebase(user.uid, key, petugas.password)
         }
     }
 
     private fun editFirebase(userKey: String?, petugasKey: String?, password: String?) {
         database = FirebaseDatabase.getInstance().getReference("Petugas")
         petugasKey?.let {
-            val petugas = Petugas(email, password, nik, nama, tanggal_lahir, telepon, jenis_kelamin, bagian)
+            val petugas =
+                Petugas(email, password, nik, nama, tanggal_lahir, telepon, jenis_kelamin, bagian)
             database.child(petugasKey).setValue(petugas).addOnSuccessListener {
                 Toast.makeText(this, "Data Petugas Berhasi Diubah", Toast.LENGTH_SHORT).show()
-                if (userKey == petugasKey){
+                if (userKey == petugasKey) {
                     val intent = Intent(this, LoginActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
@@ -162,13 +169,13 @@ class EditPetugasActivity : AppCompatActivity() {
         edt_nama_edit.setText(petugas.nama)
         edt_tl_edit.setText(petugas.tanggal_lahir)
         edt_telepon_edit.setText(petugas.telepon)
-        if (petugas.jenis_kelamin == "Perempuan"){
+        if (petugas.jenis_kelamin == "Perempuan") {
             rg_jenis_kelamin_edit.check(rb_perempuan_edit.id)
         } else {
             rg_jenis_kelamin_edit.check(rb_laki_edit.id)
         }
 
-        if (petugas.bagian == "Administrator"){
+        if (petugas.bagian == "Administrator") {
             rg_bagian_edit.check(rb_administrator_edit.id)
         } else {
             rg_bagian_edit.check(rb_pendamping_edit.id)

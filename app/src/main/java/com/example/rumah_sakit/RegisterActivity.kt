@@ -3,6 +3,7 @@ package com.example.rumah_sakit
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.RadioButton
 import android.widget.Toast
@@ -12,6 +13,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
 import kotlinx.android.synthetic.main.activity_register.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -54,8 +57,13 @@ class RegisterActivity : AppCompatActivity() {
             datePicker.addOnPositiveButtonClickListener {
                 val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
                 calendar.time = Date(it)
-                edt_tl_register.setText("${calendar.get(Calendar.YEAR)}-" +
-                        "${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.DAY_OF_MONTH)}")
+                var tanggal = ""
+                if  (calendar.get(Calendar.MONTH) + 1 >= 10){
+                    tanggal = "${calendar.get(Calendar.DAY_OF_MONTH)}-${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.YEAR)}"
+                } else {
+                    tanggal = "${calendar.get(Calendar.DAY_OF_MONTH)}-0${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.YEAR)}"
+                }
+                edt_tl_register.setText(tanggal)
 
             }
             datePicker.show(supportFragmentManager, "MyTAG")
@@ -163,11 +171,20 @@ class RegisterActivity : AppCompatActivity() {
 
                     val pasien = Pasien(email, password, nik, nama, tanggal_lahir, telepon, jenis_kelamin, "", no_bpjs, "")
                     database.child("Pasien").child(auth.uid.toString()).setValue(pasien).addOnCompleteListener {
-                        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                        val formatter = DateTimeFormatter.ofPattern("d-MM-yyy")
                         val tanggal = LocalDateTime.now().format(formatter)
                         val pendaftaran = Pendaftaran(tgl_daftar = tanggal.toString())
                         database.child("Pendaftaran").child(auth.uid.toString()).setValue(pendaftaran).addOnSuccessListener {
                             Toast.makeText(this, "Register Berhasil", Toast.LENGTH_SHORT).show()
+                            Firebase.messaging.subscribeToTopic(auth.uid.toString())
+                                .addOnCompleteListener { task ->
+                                    var msg = "Subscribed"
+                                    if (!task.isSuccessful) {
+                                        msg = "Subscribe failed"
+                                    }
+                                    Log.d("Subscribe : ", msg)
+//                                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                                }
                             val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)
                         }.addOnFailureListener {

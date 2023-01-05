@@ -9,6 +9,10 @@
                 <item android:id="@+id/mi_daftar_pasien"
                     android:title="Daftar Pasien"
                     android:icon="@drawable/ic_table"/>
+
+                <item android:id="@+id/mi_daftar_kunjungan"
+                    android:title="Persetujuan Kunjungan"
+                    android:icon="@drawable/ic_table"/>
             </menu>
         </item>
         <item android:title="Petugas">

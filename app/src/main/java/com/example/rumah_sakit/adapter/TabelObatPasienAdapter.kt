@@ -36,7 +36,7 @@ class TabelObatPasienAdapter(private var daftarJadwalObatPasienArrayList: ArrayL
         val v: View = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.tabel_obat_pasien_row_layout, viewGroup, false)
 
-        return TabelObatPasienAdapter.ViewHolder(v, mListener)
+        return ViewHolder(v, mListener)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
@@ -60,10 +60,10 @@ class TabelObatPasienAdapter(private var daftarJadwalObatPasienArrayList: ArrayL
         if (daftarJadwalObatPasienArrayList[i].laporanMinumObat.waktu_minum == null){
             viewHolder.imgDiminum.visibility = View.INVISIBLE
         }
-        viewHolder.llData.setOnClickListener{
-            selectedItemPosition = viewHolder.position
-            notifyDataSetChanged()
-        }
+//        viewHolder.llData.setOnClickListener{
+//            selectedItemPosition = viewHolder.position
+//            notifyDataSetChanged()
+//        }
 
         if (selectedItemPosition == i){
             viewHolder.tvWaktu.setBackgroundColor(viewHolder.itemView.context.resources.getColor(R.color.carolina))
@@ -80,16 +80,16 @@ class TabelObatPasienAdapter(private var daftarJadwalObatPasienArrayList: ArrayL
         return daftarJadwalObatPasienArrayList.size
     }
 
-    class ViewHolder(itemView : View, listener: TabelObatPasienAdapter.onItemClickListener) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView : View, listener: TabelObatPasienAdapter.onItemClickListener) : RecyclerView.ViewHolder(itemView) {
         val tvWaktu : TextView = itemView.findViewById(R.id.tv_waktu)
         val tvNamaObat : TextView = itemView.findViewById(R.id.tv_nama_obat)
         val imgDiminum : ImageView = itemView.findViewById(R.id.img_diminum)
         val rlDiminum : RelativeLayout = itemView.findViewById(R.id.rl_diminum)
-        val llData : LinearLayout = itemView.findViewById(R.id.ll_data)
         init {
             itemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
-
+                selectedItemPosition = adapterPosition
+                notifyDataSetChanged()
             }
         }
     }

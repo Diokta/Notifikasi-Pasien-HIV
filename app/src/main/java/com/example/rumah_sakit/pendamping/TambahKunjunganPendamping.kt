@@ -38,10 +38,13 @@ class TambahKunjunganPendamping : AppCompatActivity() {
             datePicker.addOnPositiveButtonClickListener {
                 val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
                 calendar.time = Date(it)
-                edt_tgl_kunjungan.setText(
-                    "${calendar.get(Calendar.YEAR)}-" +
-                            "${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.DAY_OF_MONTH)}"
-                )
+                var tanggal = ""
+                if  (calendar.get(Calendar.MONTH) + 1 >= 10){
+                    tanggal = "${calendar.get(Calendar.DAY_OF_MONTH)}-${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.YEAR)}"
+                } else {
+                    tanggal = "${calendar.get(Calendar.DAY_OF_MONTH)}-0${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.YEAR)}"
+                }
+                edt_tgl_kunjungan.setText(tanggal)
 
             }
             datePicker.show(supportFragmentManager, "MyTAG")

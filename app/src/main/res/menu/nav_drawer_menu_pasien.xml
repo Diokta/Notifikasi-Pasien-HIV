@@ -6,9 +6,16 @@
             android:icon="@drawable/ic_profile"/>
         <item android:title="Obat">
             <menu>
-                <item android:id="@+id/mi_daftar_pasien"
+                <item android:id="@+id/mi_lapor_obat"
                     android:title="Daftar Obat"
                     android:icon="@drawable/ic_table"/>
+            </menu>
+        </item>
+        <item android:title="Kunjungan">
+            <menu>
+                <item android:id="@+id/mi_tambah_kunjungan"
+                    android:title="Kunjungan"
+                    android:icon="@drawable/ic_baseline_add_home_24"/>
             </menu>
         </item>
     </group>

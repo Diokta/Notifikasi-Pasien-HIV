@@ -31,6 +31,19 @@ class LoginActivity : AppCompatActivity() {
 //                startActivity(intent)
 //            }
 //        }
+        val user = userPref.getUser()
+        if (user.job == "Pasien"){
+            val intent = Intent(this@LoginActivity, DaftarObatPasienActivity::class.java)
+            startActivity(intent)
+        }
+        if (user.job == "Administrator"){
+            val intent = Intent(this, DaftarPasienTerdaftarActivity::class.java)
+            startActivity(intent)
+        }
+        if (user.job == "Pendamping"){
+            val intent = Intent(this, DaftarPasienPendampingActivity::class.java)
+            startActivity(intent)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 

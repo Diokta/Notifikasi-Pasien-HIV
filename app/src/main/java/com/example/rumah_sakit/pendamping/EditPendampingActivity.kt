@@ -47,7 +47,7 @@ class EditPendampingActivity : AppCompatActivity() {
         btn_datepicker.setOnClickListener {
             val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
 
-            val formatString = "yyyy-MM-dd"
+            val formatString = "d-MM-yyyy"
             val dateFormat = SimpleDateFormat(formatString)
             val date : Date = dateFormat.parse(edt_tl_edit.text.toString())
             calendar.time = date
@@ -61,8 +61,13 @@ class EditPendampingActivity : AppCompatActivity() {
             datePicker.addOnPositiveButtonClickListener {
 
                 calendar.time = Date(it)
-                edt_tl_edit.setText("${calendar.get(Calendar.YEAR)}-" +
-                        "${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.DAY_OF_MONTH)}")
+                var tanggal = ""
+                if  (calendar.get(Calendar.MONTH) + 1 >= 10){
+                    tanggal = "${calendar.get(Calendar.DAY_OF_MONTH)}-${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.YEAR)}"
+                } else {
+                    tanggal = "${calendar.get(Calendar.DAY_OF_MONTH)}-0${calendar.get(Calendar.MONTH) + 1}-${calendar.get(Calendar.YEAR)}"
+                }
+                edt_tl_edit.setText(tanggal)
 
             }
             datePicker.show(supportFragmentManager, "MyTAG")

@@ -106,12 +106,22 @@ class DaftarPasienTerdaftarActivity : AppCompatActivity(),
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
-        if (id == R.id.mi_profil){
-            val intent = Intent(this@DaftarPasienTerdaftarActivity, DetailPetugasActivity::class.java)
+        if (id == R.id.mi_profil) {
+            val intent =
+                Intent(this@DaftarPasienTerdaftarActivity, DetailPetugasActivity::class.java)
             intent.putExtra("key", user.uid)
             startActivity(intent)
-        }  else if (id == R.id.mi_daftar_pasien){
-            val intent = Intent(this@DaftarPasienTerdaftarActivity, DaftarPasienTerdaftarActivity::class.java)
+        } else if (id == R.id.mi_daftar_pasien) {
+            val intent = Intent(
+                this@DaftarPasienTerdaftarActivity,
+                DaftarPasienTerdaftarActivity::class.java
+            )
+            startActivity(intent)
+        }else if (id == R.id.mi_daftar_kunjungan){
+            val intent = Intent(
+                this@DaftarPasienTerdaftarActivity,
+                DaftarKunjunganAdminActivity::class.java
+            )
             startActivity(intent)
         } else if (id == R.id.mi_tambah_petugas){
             val intent = Intent(this@DaftarPasienTerdaftarActivity, RegisterPetugasActivity::class.java)

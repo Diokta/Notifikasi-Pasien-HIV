@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission
+        android:name="android.permission.POST_NOTIFICATIONS"
+        tools:node="remove" />
 
     <application
         android:allowBackup="true"
@@ -14,29 +18,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rumah_sakit.NoActionBar"
-        tools:targetApi="31">
+        tools:targetApi="31" >
+        <activity
+            android:name=".admin.DaftarKunjunganAdminActivity"
+            android:exported="false" >
+        </activity>
+
+        <service
+            android:name=".PasienService"
+            android:enabled="true"
+            android:process=":test" />
+
+        <activity
+            android:name=".pasien.TambahKunjunganPasienActivity"
+            android:exported="false" />
         <activity
             android:name=".pasien.InputMinumObatPasienActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".pasien.DaftarObatPasienActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false" >
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".pendamping.TambahJadwalMinumObat"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".pendamping.DaftarKunjunganPendampingActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".pendamping.TambahKunjunganPendamping"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".pendamping.DetailPasienPendampingActivity"
             android:exported="false" />
@@ -48,7 +66,7 @@
             android:exported="false" />
         <activity
             android:name=".pendamping.DaftarPasienPendampingActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".admin.DetailObatActivity"
             android:exported="false" />
@@ -90,14 +108,12 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false">
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN" />-->
-
-
-<!--             <category android:name="android.intent.category.LAUNCHER" />-->
-<!--             </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
